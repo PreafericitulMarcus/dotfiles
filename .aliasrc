@@ -1,0 +1,18 @@
+alias vim="nvim"
+alias sl="ls"
+alias psa="ps auxf"
+alias rm="rm -I"
+alias mkdir="mkdir -p"
+alias grep="rg --color=auto"
+alias df="df -h"
+alias path='echo -e ${PATH//:/\\n}'
+alias ports="ss -tulanp"
+
+
+# Requires installing stuff
+alias bat="batcat" 
+alias ls="eza -h --color=always --icons=auto --group-directories-first"
+alias fd="fdfind"
+
+# This is for the dotfiles bare repository
+alias dotfile="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"

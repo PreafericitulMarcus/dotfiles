@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# terminal + tmux main session
+#
+
+SESSION="main"
+
+# If already inside tmux, just start a shell
+if [ -n "$TMUX" ]; then
+    exec $SHELL
+else
+    exec tmux new-session -A -s $SESSION
+fi

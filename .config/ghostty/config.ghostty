@@ -1,0 +1,29 @@
+background = #252525
+background-opacity = 1.0
+cursor-color = #c0caf5
+selection-background = #33467c
+palette = 1=#b5222f
+palette = 9=#ff7a93
+
+window-padding-x = 0
+window-padding-y = 2
+
+window-theme = dark
+window-decoration = true
+
+font-family="Cousine Nerd Font Propo"
+font-style="Regular"
+font-size=14
+
+scrollback-limit = 100000
+
+command = /home/marcus/.local/bin/tmuxSessionMain
+
+mouse-hide-while-typing = false
+
+gtk-single-instance = desktop
+
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+copy-on-select = true
