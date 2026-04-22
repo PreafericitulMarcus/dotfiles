@@ -127,3 +127,5 @@ eval "$(zoxide init bash --cmd cd)"
 
 # fuzzy finder
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+. "/home/marcus/.deno/env"

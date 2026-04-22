@@ -7,7 +7,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			require("marcus.lspconfig")
+			require("marcus.lspconfig").setup()
 		end,
 	},
 
