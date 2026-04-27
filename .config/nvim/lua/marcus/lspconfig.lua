@@ -1,6 +1,7 @@
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		local opts = { noremap = true, silent = true, buffer = bufnr }
 		local keymap = vim.keymap.set
 
@@ -11,9 +12,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap('n', '<leader>gr', vim.lsp.buf.references, opts)
 		keymap('n', '<leader>gi', vim.lsp.buf.implementation, opts)
 		keymap('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+		keymap('i', '<C-k>', vim.lsp.buf.signature_help, opts)
 		keymap('n', '<C-p>', vim.diagnostic.goto_prev, opts)
 		keymap('n', '<C-n>', vim.diagnostic.goto_next, opts)
 		keymap('n', 'K', vim.lsp.buf.hover, opts)
+
+		if client and client.name == 'ruff' then
+			client.server_capabilities.hoverProvider = false
+		end
 	end,
 })
 
@@ -24,14 +30,27 @@ return {
 			ensure_installed = {
 				"clangd",
 				"lua_ls",
-				"jedi_language_server",
-				"superhtml",
+				"html",
 				"ruff",
+				"ts_ls",
+				"pyright",
 			},
 		})
 
-		vim.lsp.enable("jedi_language_server")
-		vim.lsp.enable("superhtml")
+		local capabilities = require('cmp_nvim_lsp').default_capabilities()
+		vim.lsp.config('*', { capabilities = capabilities })
+
+		vim.lsp.enable("pyright")
+
+		local custom_data_path = vim.fn.expand("~/.config/nvim/alpine-html-data.json")
+		vim.lsp.config("html", {
+			settings = {
+				html = {
+					customData = { custom_data_path }
+				}
+			}
+		})
+		vim.lsp.enable("html")
 
 		vim.lsp.config("clangd", {
 			cmd = { "clangd", "--header-insertion=never", "--background-index" },
@@ -51,6 +70,6 @@ return {
 		})
 		vim.lsp.enable("ruff")
 
-		vim.lsp.enable("denols")
+		vim.lsp.enable("ts_ls")
 	end
 }

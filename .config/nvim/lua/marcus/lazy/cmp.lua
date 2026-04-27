@@ -9,6 +9,7 @@ return {
 		"onsails/lspkind-nvim",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -45,8 +46,9 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
-				{ name = "buffer",  keyword_length = 4 },
+				{ name = "buffer",                 keyword_length = 4 },
 				{ name = "path" },
 				{ name = "tags" },
 			}),
@@ -58,7 +60,8 @@ return {
 						nvim_lsp = "[LSP]",
 						path = "[path]",
 						tags = "[tags]",
-						luasnip = "[SNIP]"
+						luasnip = "[SNIP]",
+						nvim_lsp_signature_help = "[SIG]",
 					}
 				}),
 			},

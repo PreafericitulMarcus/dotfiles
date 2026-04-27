@@ -3,9 +3,10 @@ return {
 	event = "VeryLazy",
 	opts = {
 		spec = {
-			{ "<leader>f", group = "file/find" },
-			{ "<leader>g", group = "git" },
-			{ "<leader>s", group = "search" },
+			{ "<leader>f",  group = "file/find" },
+			{ "<leader>g",  group = "git" },
+			{ "<leader>s",  group = "search" },
+			{ "<leader>rh", require("marcus.keymap").toggle_substitute_help, desc = "Show Replace Cheat Sheet" },
 		},
 	},
 	keys = {
